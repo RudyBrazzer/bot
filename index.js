@@ -16,7 +16,7 @@ const client = new DiscordJS.Client({
     ]
 })
 client.events = new DiscordJS.Collection()
-require('./mongo')()
+// require('./mongo')()
 
 module.exports.client = client
 
@@ -28,10 +28,10 @@ new WOKCommands(client, {
     typeScript: false,
     testServers: ['899244863197954048', '773067234439462913', '899644099924222012' ],
     botOwners: '478550042949582858',
-    // dbOptions: {
-    //     keepAlive: true
-    // },
-    // mongoUri: process.env.MONGO_URI,
+    dbOptions: {
+        keepAlive: true
+    },
+    mongoUri: process.env.mongoPath,
 })
 
 .setDefaultPrefix('$')
