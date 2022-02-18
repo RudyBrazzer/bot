@@ -4,7 +4,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 module.exports = {
-    description: 'Discord together. Beware some activities may only be avaiable through server boosts.',
+    description: 'Discord together!. Beware some activities may only be avaiable through server boosts.',
     category: 'Fun & Games',
     slash: true,
     testOnly: false,    
