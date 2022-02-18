@@ -50,7 +50,7 @@ module.exports = {
                     value: "wordsnack"
                 },
                 {
-                    name: "doodlecrew",
+                    name: "sketchheads",
                     value: "doodle"
                 },
                 {
@@ -237,7 +237,7 @@ module.exports = {
               body: JSON.stringify({
                 max_age: 86400,
                 max_uses: 0,
-                target_application_id: "878067389634314250",
+                target_application_id: "902271654783242291",
                 target_type: 2,
                 temporary: false,
                 validate: null
