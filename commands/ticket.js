@@ -9,7 +9,6 @@ const {
 } = require('discord.js');
 
 module.exports = {
-  name: 'ticket-panel',
   description: 'Sends the panel of ticket system',
   permissions: ["MANAGE_MESSAGES"],
   category: 'Moderation',
