@@ -1,29 +1,45 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = {
+
+const {
+    Client,
+    Message,
+    MessageEmbed,
+    MessageButton,
+    MessageActionRow
+  } = require('discord.js');
+
+  
+module.exports = {
     category: 'Configuration',
     description: 'Sends a message. Use it for adding roles with addrole command',
     permissions: ['MANAGE_ROLES'],
     minArgs: 2,
     expectedArgs: '<channel> <text>',
     expectedArgsTypes: ['CHANNEL', 'STRING'],
-    slash: 'both',
     // testOnly: true,
     guildOnly: true,
-    callback: function (_a) {
-        var message = _a.message, interaction = _a.interaction, args = _a.args;
-        var channel = (message ? message.mentions.channels.first() : interaction.options.getChannel('channel'));
-        if (!channel || channel.type !== 'GUILD_TEXT') {
-            return 'Please tag a text channel.';
-        }
-        args.shift(); // remove the channel from the arguements array
-        var text = args.join(' ');
-        channel.send(text);
-        if (interaction) {
-            interaction.reply({
-                content: 'Sent message',
-                ephemeral: true
-            });
-        }
+      /** 
+   * @param {Client} client 
+   * @param {Message} message 
+   * @param {String[]} args 
+   */
+  callback: async ({ client, interaction, message, args, Discord }) => {
+    const channel =  message.mentions.channels.first() 
+    if(!channel || channel.type !== 'GUILD_TEXT') {
+        return 'Please tag a text channel'
     }
-};
+    args.shift()
+    const text = args.join(' ')
+    const embed = new MessageEmbed()
+    .setColor('BLUE')
+    .setAuthor(message.guild.name, message.guild.iconURL({
+        dynamic: true
+    }))
+    .setDescription(text)
+    .setTitle('AinsleyBot')
+     channel.send({
+        embeds: [embed],
+    });
+
+
+  }
+}
